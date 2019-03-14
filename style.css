@@ -5,6 +5,14 @@
 	background-repeat: no-repeat;
 }
 
+#personnage{
+
+	position: relative;
+	width : 20px;
+	height: 20px;
+
+}
+
 html{
 
 	height: 100%;

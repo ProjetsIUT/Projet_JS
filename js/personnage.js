@@ -7,18 +7,17 @@ class personnage{
 		this.icone = icone
 		
 		this.life = 100
-		this.posX = 0
-		this.posY = 0
+		
+		//changer_position(300,500)
 
 	}
-
 
 
 	changer_position(x,y){
 
 		this.posX = x
 		this.posY = y
-		
+
 		this.icone.style.left = this.posX + "px"
 		this.icone.style.top = this.posY + "px"
 
@@ -49,6 +48,7 @@ class personnage{
 		this.icone.style.left = this.posX + "px"
 		this.icone.style.top = this.posY + "px"
 	}
+
 
 	remove_life(x){
 

@@ -4,8 +4,6 @@ class carte {
 
 		this.map = document.getElementById("carte")
 
-
-		
 	}
 
 
