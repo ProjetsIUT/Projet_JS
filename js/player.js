@@ -1,19 +1,12 @@
 class player extends personnage{
 
-	constructor(name,icone){
+	constructor(name){
 
-		super(name,icone)
+		super(name, document.getElementById("personnage"))
+
 	}
 
-	remove_life(x){
 
-		this.life-=x;
-	}
-
-	add_life(x){
-
-		this.life +=x;
-	}
 
 
 

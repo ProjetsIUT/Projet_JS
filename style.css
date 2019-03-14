@@ -1,3 +1,18 @@
-#game{
-	text-align:center;
+#carte{
+	
+	background-image : url("img/background.png");
+	height: 100%;
+	background-repeat: no-repeat;
 }
+
+html{
+
+	height: 100%;
+
+}
+
+body{
+
+	height: 100%;
+}
+

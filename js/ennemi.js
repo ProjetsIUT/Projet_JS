@@ -1,9 +1,10 @@
 class ennemi extends personnage{
 
 
-	constructor(name,icone){
+	constructor(name){
 
-		super(name,icone)
+		super(name, document.getElementById("ennemi"))
+
 
 	}
 
