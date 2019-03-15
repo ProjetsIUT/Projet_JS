@@ -1,6 +1,6 @@
 
-let C = new carte();
-var P = new player("Joueur");
+let C = new carte()
+var P = new player("Joueur")
 
 
 function clavier(e){
@@ -33,11 +33,9 @@ function clavier(e){
 
 function start(){
 
-	let body = document.getElementsByTagName("body");
-	body[0].addEventListener('keydown',clavier);
-
-	P.changer_position(300,500)
-
+	let body = document.getElementsByTagName("body")
+	body[0].addEventListener('keydown',clavier)
+	P.placer_personnage()
 }
 
 
