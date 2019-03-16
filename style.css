@@ -1,11 +1,3 @@
-#carte{
-	
-	background-image : url("img/background.png");
-	height: 600px;
-	width:700px;
-	background-repeat: no-repeat;
-}
-
 #personnage{
 
 	position: relative;
