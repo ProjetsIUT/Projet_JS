@@ -1,6 +1,7 @@
 
-let C = new carte()
-var P = new player("Joueur")
+let canvas = document.getElementById("carte")
+let C = new carte(canvas)
+var P = new player("Joueur", C)
 
 
 function clavier(e){

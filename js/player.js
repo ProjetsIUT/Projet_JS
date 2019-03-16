@@ -1,8 +1,8 @@
 class player extends personnage{
 
-	constructor(name){
+	constructor(name, carte){
 
-		super(name, "img/player.png", document.getElementById("carte"))
+		super(name, "img/player.png", document.getElementById("carte"), carte)
 
 	}
 
