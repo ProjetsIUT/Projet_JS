@@ -1,6 +1,7 @@
 
 let C = new carte()
 var P = new player("Joueur")
+var B = new ball(document.getElementById("carte"))
 
 
 function clavier(e){
@@ -35,9 +36,12 @@ function start(){
 
 	let body = document.getElementsByTagName("body")
 	body[0].addEventListener('keydown',clavier)
-	P.placer_personnage()
+  P.placer_personnage()
+  setInterval(B.deplacer,10)
+  
 }
 
 
-
+start()
+start()
 
