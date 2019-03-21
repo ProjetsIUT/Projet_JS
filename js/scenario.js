@@ -7,6 +7,7 @@ var P = new player("Joueur", C)
 function clavier(e){
 
   k = e.keyCode;
+  e.preventDefault(); //annuler le comportement par défaut des flèches 
 
  switch(k) {
 
