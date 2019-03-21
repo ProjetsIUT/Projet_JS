@@ -7,7 +7,7 @@ class Item {
 		this.context = this.canvas.getContext('2d') //contexte du canvas
 		this.image = new Image() //image de l'item
 		this.image.src = icone //attribuer la source de l'icone à notre image
-		
+		this.tabSalle= {}
 		this.posX = Math.random() * (this.canvas.width - 0) + 0//position X de l'image
 		this.posY = Math.random() * (this.canvas.height - 0) + 0 //position Y de l'image
 		this.largeur = 20 //Largeur de l'image en px
