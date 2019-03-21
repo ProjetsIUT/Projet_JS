@@ -199,10 +199,10 @@ class personnage{
 		//déplacer le personnage selon l'évènement déclenché 
 
 		//vérifier si un obstacle se trouve sur la trajectoire 
-		//if (this.detecter_obstacle(x)){
+		if (this.detecter_obstacle(x)){
 
-		//	return 
-		//}
+			return 
+		}
 
 
 		//sauvegarde des coordonnées actuelles pour supprimer
@@ -266,6 +266,8 @@ class personnage{
 		this.vitesse = x
 
 	}
+
+
 
 
 
