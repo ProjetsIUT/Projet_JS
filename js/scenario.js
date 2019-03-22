@@ -4,6 +4,7 @@ let C = new carte(canvas)
 var P = new player("Joueur", C)
 
 
+
 function clavier(e){
 
   k = e.keyCode;
@@ -39,6 +40,8 @@ function clavier(e){
 
 function start(){
 
+  console.log("start")
+
 	let body = document.getElementsByTagName("body")
 	body[0].addEventListener('keydown',clavier)
 
@@ -46,7 +49,5 @@ function start(){
   P.placer_personnage()
 
 }
-
-
 
 

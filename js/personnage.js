@@ -11,14 +11,15 @@ class personnage{
 		this.image.src = icone //attribuer la source de l'icone à notre image
 		this.image.crossOrigin = "Anonymous";
 
-		this.posX = 350 //position X de l'image au début 
-		this.posY = 50 //position Y de l'image au début 
+		this.posX = 290 //position X de l'image au début 
+		this.posY = 460//position Y de l'image au début 
 
 		this.largeur = 20//Largeur de l'image en px
 		this.hauteur = 20//hauteur de l'image en px
 
-		this.life = 100 //niveau de vie par défaut
+		this.life = 3 //niveau de vie par défaut
 		this.vitesse =4//vitesse par défaut 
+		this.invincible=false //pas invinsible par défaut 
 		
 
 	}
@@ -36,7 +37,7 @@ class personnage{
 		let x
 		let y
 
-		let tab_couleurs_interdites= ["#000000ff6600","#0000000","#000000969696"] //tableau contenant les couleurs des obstacles à ne pas franchir 
+		let tab_couleurs_interdites= ["#000000ff6600","#0000000"] //tableau contenant les couleurs des obstacles à ne pas franchir 
 
 		switch(p){
 
@@ -57,7 +58,7 @@ class personnage{
 
 					    
 				    		this.changer_position(this.posX, j+1)
-				    		return true 
+				    		return hex 
 				 	    }
 
 					}
@@ -83,7 +84,7 @@ class personnage{
 
 					    	//alert("obstacle détecté!")
 				    		this.changer_position(i-20, this.posY)
-				    		return true 
+				    		return hex
 				 	    }
 
 					}
@@ -110,7 +111,7 @@ class personnage{
 
 					    
 				    		this.changer_position(this.posX, j-20)
-				    		return true 
+				    		return hex
 				 	    }
 
 					}
@@ -135,7 +136,7 @@ class personnage{
 
 					    	//alert("obstacle détecté!")
 				    		this.changer_position(i+1, this.posY)
-				    		return true 
+				    		return hex
 				 	    }
 
 					}
@@ -149,6 +150,24 @@ class personnage{
 
 		return false 
 
+	}
+
+	detecter_balle(x){
+
+		let tab_couleurs_interdites= ["#000000ff6600"] //tableau contenant les couleurs des obstacles à ne pas franchir 
+
+		console.log(this.detecter_obstacle(x))
+
+		for(let i=0; i<tab_couleurs_interdites.length; i++){
+
+			if(this.detecter_obstacle(x)==tab_couleurs_interdites[i]){
+
+				this.remove_life();
+				return true;
+			}
+
+		}
+		
 	}
 
 
@@ -196,7 +215,17 @@ class personnage{
 
 	deplacer(x){
 
+
 		//déplacer le personnage selon l'évènement déclenché 
+
+		if(!this.invincible){
+
+			//détecter si le personnage rentre en collision avec une balle, si le personnage n'est
+			//pas actuellement invinsible 
+
+			this.detecter_balle(x)
+
+		}
 
 		//vérifier si un obstacle se trouve sur la trajectoire 
 		if (this.detecter_obstacle(x)){
@@ -204,7 +233,7 @@ class personnage{
 			return 
 		}
 
-
+ 	
 		//sauvegarde des coordonnées actuelles pour supprimer
 		let oldX = this.posX
 		let oldY = this.posY
@@ -244,19 +273,47 @@ class personnage{
 
 	}
 
+	devenir_invincible(x){
 
-	remove_life(x){
+		//devenir invisible pour un temps de x millisecondes
+
+
+
+		this.invincible = true 
+		setTimeout(this.invincible =false,x)
+	}
+
+
+	remove_life(){
 
 		//soustraire x points de vie à this
 
-		this.life-=x;
+		let lifes = document.getElementById("life")
+		let children = lifes.children
+		life.removeChild(children[children.length-1])
+
+		if(this.life-1==0){
+
+			this.mourrir()
+			return
+		}
+
+		this.life--
+		this.devenir_invincible(3000)
+
+
 	}
 
-	add_life(x){
+	add_life(){
 
 		//ajouter x points de vie à this
 
-		this.life +=x;
+		this.life ++;
+	}
+
+	mourrir(){
+
+		document.location.reload()
 	}
 
 	changer_vitesse(x){
