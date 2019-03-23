@@ -8,6 +8,7 @@ class carte {
 		this.context = this.canvas.getContext('2d') //contexte du canvas
 		this.canvas.crossOrigin = "Anonymous"
 		this.items = {} //table des items sur la carte 
+		this.balles = {} //table de balles sur la carte
 
 	}
 
@@ -49,16 +50,30 @@ class carte {
 	}
 
 
-	set_background(){
+	set_background(background,x,y){
 
-		//établir l'image de la carte du batîment K 
+		if(!background){
 
-		var bck = new Image()
-		bck.src="img/background.png"
+			//établir l'image de la carte du batîment K au début de la partie
 
-		this.context.drawImage(bck,0,0)
+			var bck = new Image()
+			bck.src="img/background.png"
+
+			this.context.drawImage(bck,0,0)
+
+		}else{
+
+			this.context.putImageData(background,x,y)
+
+
+		}
+
+
+
 
 	}
+
+	
 
 
 }

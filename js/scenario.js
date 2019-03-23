@@ -1,8 +1,9 @@
 
 let canvas = document.getElementById("carte")
-let C = new carte(canvas)
-var P = new player("Joueur", C)
-
+var C = new carte(canvas)
+var P = new player("Joueur", C,290,460)
+var temps = 500
+var a_temps = document.getElementById("time")
 
 
 function clavier(e){
@@ -45,9 +46,21 @@ function start(){
 	let body = document.getElementsByTagName("body")
 	body[0].addEventListener('keydown',clavier)
 
+  	P.placer_personnage()
 
-  P.placer_personnage()
+
+  setInterval(time,1000)
+
 
 }
 
 
+function time(){
+
+  a_temps.innerHTML="Temps restant: " + temps -- 
+
+}
+
+start()
+
+start()

@@ -1,7 +1,7 @@
 class personnage{
 
 
-	constructor(name, icone, canvas, carte){
+	constructor(name, icone, canvas, carte, x,y){
 
 		this.name = name //nom du personnage
 
@@ -11,8 +11,8 @@ class personnage{
 		this.image.src = icone //attribuer la source de l'icone à notre image
 		this.image.crossOrigin = "Anonymous";
 
-		this.posX = 290 //position X de l'image au début 
-		this.posY = 460//position Y de l'image au début 
+		this.posX = x //position X de l'image au début 
+		this.posY = y//position Y de l'image au début 
 
 		this.largeur = 20//Largeur de l'image en px
 		this.hauteur = 20//hauteur de l'image en px
@@ -20,10 +20,10 @@ class personnage{
 		this.life = 3 //niveau de vie par défaut
 		this.vitesse =4//vitesse par défaut 
 		this.invincible=false //pas invinsible par défaut 
+
 		
 
 	}
-
 
 
 	detecter_obstacle(p){
@@ -191,7 +191,9 @@ class personnage{
 		//creer une image à partir de this.icone et la placer sur le canvas
 
 		this.carte.set_background()
+
 		this.carte.context.drawImage(this.image,this.posX,this.posY)
+
 		
 	}
 
@@ -206,9 +208,10 @@ class personnage{
 		this.posX = x
 		this.posY = y
 
-		this.carte.context.clearRect(oldX,oldY,this.largeur,this.hauteur)
 		this.carte.set_background()
+
 		this.carte.context.drawImage(this.image,this.posX,this.posY)
+
 
 
 	}
@@ -266,7 +269,10 @@ class personnage{
 		//supprimer l'ancienne position 
 		this.carte.context.clearRect(oldX,oldY,this.largeur,this.hauteur)
 
+		//redéfinir le fond du canvas
 		this.carte.set_background()
+
+
 		//placer le personnage à la nouvelle position sur le canvas
 		this.carte.context.drawImage(this.image,this.posX,this.posY)
 
