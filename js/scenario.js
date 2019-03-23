@@ -1,7 +1,11 @@
 
-let canvas = document.getElementById("carte")
+var canvas = document.getElementById("carte")
 var C = new carte(canvas)
 var P = new player("Joueur", C,290,460)
+
+var tab_ennemis=[new ennemi("Ennemi1",C,20,20), new ennemi("Ennemi2",C,100,100), new ennemi("Ennemi3",C,200,200),new ennemi("Ennemi4",C,330,480),
+                 new ennemi("Ennemi5",C,330,480), new ennemi("Ennemi6",C,197,468), new ennemi("Ennemi7",C,547,239), new ennemi("Ennemi8",C,319,128),
+                 new ennemi("Ennemi9",C,456,466), new ennemi("Ennemi10",C,662,295)]
 var temps = 500
 var a_temps = document.getElementById("time")
 
@@ -46,8 +50,8 @@ function start(){
 	let body = document.getElementsByTagName("body")
 	body[0].addEventListener('keydown',clavier)
 
-  	P.placer_personnage()
-
+  C.set_background()
+  P.placer_autres()
 
   setInterval(time,1000)
 
@@ -57,10 +61,17 @@ function start(){
 
 function time(){
 
-  a_temps.innerHTML="Temps restant: " + temps -- 
+  if(temps==0){
+
+    alert("Soyez plus rapide la prochaine fois !")
+    document.location.reload()
+
+  }
+
+  temps=temps -1
+  a_temps.innerHTML="Temps restant: " + temps 
 
 }
 
 start()
 
-start()

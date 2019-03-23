@@ -8,7 +8,6 @@ class carte {
 		this.context = this.canvas.getContext('2d') //contexte du canvas
 		this.canvas.crossOrigin = "Anonymous"
 		this.items = {} //table des items sur la carte 
-		this.balles = {} //table de balles sur la carte
 
 	}
 
@@ -76,6 +75,13 @@ class carte {
 	
 
 
+
 }
+
+
+
+
+
+
 
   
