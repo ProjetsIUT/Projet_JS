@@ -49,7 +49,7 @@ function start(){
   	P.placer_personnage()
 
 
-  setInterval(time,1000)
+  	setInterval(time,2000)
 
 
 }

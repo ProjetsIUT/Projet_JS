@@ -152,24 +152,6 @@ class personnage{
 
 	}
 
-	detecter_balle(x){
-
-		let tab_couleurs_interdites= ["#000000ff6600"] //tableau contenant les couleurs des obstacles à ne pas franchir 
-
-		console.log(this.detecter_obstacle(x))
-
-		for(let i=0; i<tab_couleurs_interdites.length; i++){
-
-			if(this.detecter_obstacle(x)==tab_couleurs_interdites[i]){
-
-				this.remove_life();
-				return true;
-			}
-
-		}
-		
-	}
-
 
 	rgbHex(r,g,b){
 
@@ -220,15 +202,6 @@ class personnage{
 
 
 		//déplacer le personnage selon l'évènement déclenché 
-
-		if(!this.invincible){
-
-			//détecter si le personnage rentre en collision avec une balle, si le personnage n'est
-			//pas actuellement invinsible 
-
-			this.detecter_balle(x)
-
-		}
 
 		//vérifier si un obstacle se trouve sur la trajectoire 
 		if (this.detecter_obstacle(x)){

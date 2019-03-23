@@ -9,7 +9,7 @@ class ennemi extends personnage{
 		this.personnage = P
 
 		var t = this;
-		this.timer = setInterval(function(){t.deplacer();}, 100);
+	//	this.timer = setInterval(function(){t.deplacer();}, 100);
 
 	}
 
