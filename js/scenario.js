@@ -1,7 +1,8 @@
 
 let C = new carte()
 var P = new player("Joueur")
-var B = new ball(document.getElementById("carte"))
+var can = document.getElementById("carte")
+var B = new ball(can)
 
 
 function clavier(e){
@@ -40,8 +41,4 @@ function start(){
   setInterval(B.deplacer,10)
   
 }
-
-
-start()
-start()
 
