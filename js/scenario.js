@@ -1,15 +1,23 @@
 
-let C = new carte()
-var P = new player("Joueur")
-var can = document.getElementById("carte")
-var B = new ball(can)
+var canvas = document.getElementById("carte")
+var C = new carte(canvas)
+var P = new player("Joueur", C,290,460)
+
+var tab_ennemis=[new ennemi("Ennemi1",C,20,20), new ennemi("Ennemi2",C,100,100), new ennemi("Ennemi3",C,200,200),new ennemi("Ennemi4",C,330,480),
+                 new ennemi("Ennemi5",C,330,480), new ennemi("Ennemi6",C,197,468), new ennemi("Ennemi7",C,547,239), new ennemi("Ennemi8",C,319,128),
+                 new ennemi("Ennemi9",C,456,466), new ennemi("Ennemi10",C,662,295)]
+var temps = 500
+var a_temps = document.getElementById("time")
 
 
 function clavier(e){
 
   k = e.keyCode;
+  e.preventDefault(); //annuler le comportement par défaut des flèches 
 
  switch(k) {
+
+
   	 case 37 : // touche gauche
   
       P.deplacer(4)
@@ -21,8 +29,10 @@ function clavier(e){
       break;
     case 39 : // touche droite
 
+
       P.deplacer(2)
       break;
+
     case 40 : // touche bas
       
       P.deplacer(3)
@@ -35,10 +45,33 @@ function clavier(e){
 
 function start(){
 
+  console.log("start")
+
 	let body = document.getElementsByTagName("body")
 	body[0].addEventListener('keydown',clavier)
-  P.placer_personnage()
-  setInterval(B.deplacer,10)
-  
+
+  C.set_background()
+  P.placer_autres()
+
+  setInterval(time,1000)
+
+
 }
+
+
+function time(){
+
+  if(temps==0){
+
+    alert("Soyez plus rapide la prochaine fois !")
+    document.location.reload()
+
+  }
+
+  temps=temps -1
+  a_temps.innerHTML="Temps restant: " + temps 
+
+}
+
+start()
 
