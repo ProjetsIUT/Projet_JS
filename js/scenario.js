@@ -2,6 +2,7 @@
 var canvas = document.getElementById("carte")
 var C = new carte(canvas)
 var P = new player("Joueur", C,290,460)
+var P2 = new player("Joueur", C, 290,490)
 
 var tab_ennemis=[new ennemi("Ennemi1",C,20,20), new ennemi("Ennemi2",C,100,100), new ennemi("Ennemi3",C,200,200),new ennemi("Ennemi4",C,330,480),
                  new ennemi("Ennemi5",C,330,480), new ennemi("Ennemi6",C,197,468), new ennemi("Ennemi7",C,547,239), new ennemi("Ennemi8",C,319,128),
@@ -38,6 +39,23 @@ function clavier(e){
       P.deplacer(3)
       break;
     
+    case 90: // touche z haut
+
+      P2.deplacer(1)
+      break;
+
+    case 81: // touche q gauche
+      P2.deplacer(4)
+      break;
+
+    case 83: // touche s bas
+      P2.deplacer(3)
+      break;
+
+    case 68: // touche d droite
+      P2.deplacer(2)
+      break;
+
     default :
   }
 
@@ -52,6 +70,7 @@ function start(){
 
   C.set_background()
   P.placer_autres()
+  P2.placer_autres()
 
   setInterval(time,1000)
 

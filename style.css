@@ -1,4 +1,9 @@
-
+#carte{
+	background-image : url("img/background.png");
+	height: 600px;
+	width:700px;
+	background-repeat: no-repeat;
+}
 
 #personnage{
 
@@ -9,13 +14,26 @@
 }
 
 html{
-
 	height: 100%;
-
 }
 
 body{
-
+	display : flex;
+	flex-direction: column;
 	height: 100%;
 }
 
+canvas {
+	margin : auto;
+}
+
+h1 {
+	text-align: center;
+	padding-top : 5px;
+	padding-bottom : 10px;
+}
+
+#menu > div {
+	padding : 10px;
+	text-align: center;
+}

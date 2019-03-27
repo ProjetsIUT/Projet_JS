@@ -1,4 +1,4 @@
-class ball {
+/*class ball {
     constructor(canvas){
 
 		this.canvas = canvas  //canvas du jeu
@@ -11,13 +11,13 @@ class ball {
 
 	}
 
-    /*drawBall() {
+    drawBall() {
         this.context.beginPath();
         this.context.arc(this.posX, this.posY, 10, 0, Math.PI*2);
         this.context.fillStyle = "red";
         this.context.fill();
         this.context.closePath();
-    }*/
+    }
     
     detectercol(){
         return false
@@ -53,4 +53,4 @@ class ball {
 		//placer le personnage à la nouvelle position sur le canvas
 
 	}
-}
+} */
