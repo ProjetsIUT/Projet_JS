@@ -21,9 +21,9 @@ class personnage{
 		this.vitesse =4//vitesse par défaut 
 		this.invincible=false //pas invinsible par défaut 
 
-		
-
+	
 	}
+
 
 
 	detecter_obstacle(p){
@@ -37,7 +37,7 @@ class personnage{
 		let x
 		let y
 
-		let tab_couleurs_interdites= ["#000000ff6600","#0000000"] //tableau contenant les couleurs des obstacles à ne pas franchir 
+		let tab_couleurs_interdites= ["#000000ff6600","#0000000","#000000f44029","#0000000f2f200","#000000aa00"] //tableau contenant les couleurs des obstacles à ne pas franchir 
 
 		switch(p){
 
@@ -172,20 +172,14 @@ class personnage{
 
 		//creer une image à partir de this.icone et la placer sur le canvas
 
-		this.carte.set_background()
-
 		this.carte.context.drawImage(this.image,this.posX,this.posY)
 
-		
 	}
 
 
 	changer_position(x,y){
 
 		//modifier les attributs posX et posY et placer le personnage aux nouvelles coordonnées
-
-		let oldX = this.posX
-		let oldY = this.posY
 
 		this.posX = x
 		this.posY = y
@@ -195,21 +189,24 @@ class personnage{
 		this.carte.context.drawImage(this.image,this.posX,this.posY)
 
 
+		this.placer_autres()
+	}
 
+	placer_autres(){  	//replacer les autres personnages aux anciennes positions car ils ont été écrasés par le nouveau fond 
+
+		P.placer_personnage()
+
+		//vérifier si un obstacle se trouve sur la trajectoire 
+
+		for(let i=0; i<tab_ennemis.length; i++){
+
+			tab_ennemis[i].placer_personnage()
+		}
 	}
 
 	deplacer(x){
 
-
-		//déplacer le personnage selon l'évènement déclenché 
-
-		//vérifier si un obstacle se trouve sur la trajectoire 
-		if (this.detecter_obstacle(x)){
-
-			return 
-		}
-
- 	
+	
 		//sauvegarde des coordonnées actuelles pour supprimer
 		let oldX = this.posX
 		let oldY = this.posY
@@ -239,7 +236,7 @@ class personnage{
 
 		}
 
-		//supprimer l'ancienne position 
+		//supprimer effacer le canvas à l'ancienne position 
 		this.carte.context.clearRect(oldX,oldY,this.largeur,this.hauteur)
 
 		//redéfinir le fond du canvas
@@ -250,50 +247,11 @@ class personnage{
 		this.carte.context.drawImage(this.image,this.posX,this.posY)
 
 
-	}
-
-	devenir_invincible(x){
-
-		//devenir invisible pour un temps de x millisecondes
-
-
-
-		this.invincible = true 
-		setTimeout(this.invincible =false,x)
-	}
-
-
-	remove_life(){
-
-		//soustraire x points de vie à this
-
-		let lifes = document.getElementById("life")
-		let children = lifes.children
-		life.removeChild(children[children.length-1])
-
-		if(this.life-1==0){
-
-			this.mourrir()
-			return
-		}
-
-		this.life--
-		this.devenir_invincible(3000)
+		this.placer_autres()
 
 
 	}
 
-	add_life(){
-
-		//ajouter x points de vie à this
-
-		this.life ++;
-	}
-
-	mourrir(){
-
-		document.location.reload()
-	}
 
 	changer_vitesse(x){
 

@@ -1,10 +1,9 @@
 class Item {
 
-	constructor(name, icone, canvas){
+	constructor(name, icone, carte){
 
 		this.name = name //nom de l'item
-		this.canvas = canvas  //canvas du jeu
-		this.context = this.canvas.getContext('2d') //contexte du canvas
+		this.carte = carte
 		this.image = new Image() //image de l'item
 		this.image.src = icone //attribuer la source de l'icone à notre image
 		
@@ -13,6 +12,12 @@ class Item {
 		this.largeur = 20 //Largeur de l'image en px
 		this.hauteur = 20 //hauteur de l'image en px
 		
+
+	}
+
+	placer_item(){
+
+		this.carte.context.drawImage(this.image,this.posX,this.posY)
 
 	}
 

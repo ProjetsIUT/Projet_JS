@@ -1,15 +1,16 @@
 class ennemi extends personnage{
 
 
-	constructor(name, P, carte,x,y){
+	constructor(name, carte,x,y){
 
-		super(name, "img/player.png", document.getElementById("carte"), carte,x,y)
+		super(name, "img/witch.png", document.getElementById("carte"), carte,x,y)
 
-		this.direction = 1
-		this.personnage = P
+		this.direction = 1 //direction par défaut (vers le haut)
 
 		var t = this;
-	//	this.timer = setInterval(function(){t.deplacer();}, 100);
+
+		this.timer = setInterval(function(){t.deplacer();}, 100); //timer pour déplacer l'ennemi
+		this.compteur = 0 //nombre de déplacements
 
 	}
 
@@ -17,64 +18,49 @@ class ennemi extends personnage{
 
 	deplacer(){
 
-
-		console.log("se déplace")
-		var x = this.direction 
-
-		if (this.detecter_obstacle(x)){
-
-			this.direction = Math.floor(Math.random() * 4)
-			x = this.direction 
-
-		}
-
-
-
- 	
-		//sauvegarde des coordonnées actuelles pour supprimer
-		let oldX = this.posX
-		let oldY = this.posY
-
-		switch(x){
-
-			case 1:  //Vers le haut
-
-				this.posY -= this.vitesse
-				break;
+		//Deplacer l'ennemi de manière aléatoire 
 		
-			case 2: //Vers la droite
+		if(this.compteur > 8 ){ //au bout de x déplacement, changer la direction de l'ennemi 
 
-				this.posX += this.vitesse
-				break;
-
-			case 3: //Vers le bas
-
-	
-				this.posY += this.vitesse
-				break;
-
-			case 4: //Vers la gauche 
-
-				this.posX -= this.vitesse
-				break;
+			this.direction = Math.floor(Math.random() * 4 ) + 1
+			this.compteur = 0
 
 		}
 
-		//supprimer l'ancienne position 
-		this.carte.context.clearRect(oldX,oldY,this.largeur,this.hauteur)
+		if(!P.invincible){
 
-		//redéfinir le fond du canvas
-		this.carte.set_background()
+			this.detecter_personnage(this.direction)
+
+		}
+
+		//Détecter si un obstacle se trouve sur la trajectoire 
+
+		if (this.detecter_obstacle(this.direction)){
+
+			this.direction = Math.floor(Math.random() * 4 ) + 1
+			this.carte.set_background()
+			this.placer_autres()
+			return
+		}
 
 
-		//placer le personnage à la nouvelle position sur le canvas
-		this.carte.context.drawImage(this.image,this.posX,this.posY)
-
-		this.personnage.placer_personnage()
+		super.deplacer(this.direction)
+		this.compteur ++ 
 
 
 	}
 
+	detecter_personnage(x){
+
+		//Si l'obstacle rencontré correspond à la couleur du personnage
+		if(this.detecter_obstacle(x)=="#000000f9ac2c"){
+
+			P.remove_life(); //enlever 1 pt de vie au personage 
+			return true;
+		}
+
+		
+	}
 
 	detecter_obstacle(p){
 
@@ -87,7 +73,7 @@ class ennemi extends personnage{
 		let x
 		let y
 
-		let tab_couleurs_interdites= ["#000000ff6600","#0000000"] //tableau contenant les couleurs des obstacles à ne pas franchir 
+		let tab_couleurs_interdites= ["#000000ff6600","#0000000","#000000f9ac2c"] //tableau contenant les couleurs des obstacles à ne pas franchir 
 
 		switch(p){
 
@@ -105,7 +91,6 @@ class ennemi extends personnage{
 					    var hex = "#" + ("000000" +  this.rgbHex(p[0],p[1],p[2]).slice(-6))
 					
 					    if(tab_couleurs_interdites.includes(hex)){
-
 					 
 				    		return hex 
 				 	    }
@@ -131,7 +116,6 @@ class ennemi extends personnage{
 					
 					    if(tab_couleurs_interdites.includes(hex)){
 
-					
 				    		return hex
 				 	    }
 
