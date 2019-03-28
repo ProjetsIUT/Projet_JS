@@ -144,14 +144,14 @@ function constructgamepage() {
   acommencer.innerHTML = "Commencer la partie"
   acommencer.className = "beg"
   divnav.appendChild(acommencer)
-  document.getElementById("commencer").onclick = "beginning()"
+  document.getElementById("commencer").onclick = beginning
 }
 
 function beginning() {
   canvas = document.getElementById("carte")
   C = new carte(canvas)
   P = new player("Joueur", C,290,460)
-  P2 = new player2("Joueur", C, 290,490)
+  P2 = new player("Joueur", C, 290,490)
   tab_ennemis = [new ennemi("Ennemi1",C,20,20), new ennemi("Ennemi2",C,100,100), new ennemi("Ennemi3",C,200,200),new ennemi("Ennemi4",C,330,480),
   new ennemi("Ennemi5",C,330,480), new ennemi("Ennemi6",C,197,468), new ennemi("Ennemi7",C,547,239), new ennemi("Ennemi8",C,319,128),
   new ennemi("Ennemi9",C,456,466), new ennemi("Ennemi10",C,662,295)]
