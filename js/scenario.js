@@ -58,9 +58,34 @@ function clavier(e){
 
 }
 
+function viderbody() {
+  while(document.body.lastChild) {
+    document.body.removeChild(document.body.lastChild)
+  }
+}
+
+function constructmainmenu() {
+  viderbody()
+  let tit = document.createElement('h1')
+  tit.innerHTML = "Invasion au premier etage du batiment k !"
+  tit.style.textAlign = "center"
+  tit.style.fontSize = "4em"
+  document.body.appendChild(tit)
+  let beg = document.createElement('button')
+  beg.innerHTML = "Commencer le jeu"
+  beg.className = "beg"
+  beg.href = "#"
+  beg.style.fontSize = "2em"
+  document.body.appendChild(beg)
+  beg.onclick = constructgamepage
+}
+
+window.onload = constructmainmenu
+
 function constructgamepage() {
+  viderbody()
   var title = document.createElement('h1')
-  title.innerHTML = "Invasion au premier étage du batiment k !"
+  title.innerHTML = "Invasion au premier etage du batiment k !"
   document.body.appendChild(title)
   var carte = document.createElement('canvas')
   carte.id = "carte"
@@ -98,7 +123,8 @@ function constructgamepage() {
   var acommencer = document.createElement('a')
   acommencer.id = "commencer"
   acommencer.href = "#"
-  acommencer.innerHTML = "Commencer"
+  acommencer.innerHTML = "Commencer la partie"
+  acommencer.className = "beg"
   divnav.appendChild(acommencer)
   document.getElementById("commencer").onclick = beginning
 }
