@@ -110,6 +110,23 @@ function constructgamepage() {
     divheart.appendChild(img)
   }
   divlife.appendChild(divheart)
+
+  var divlifeUn = document.createElement('div')
+  divlifeUn.id = "lifeUn"
+  divmenu.appendChild(divlifeUn)
+  var vierestantesJ2 = document.createElement("a")
+  vierestantesJ2.innerHTML = "Vies Restantes du Joueur 2"
+  divlifeUn.appendChild(vierestantesJ2)
+  var divheartUn = document.createElement("div")
+  divheartUn.id = "heartUn"
+  for(let i = 0; i<3; i++) {
+    let imgUn = document.createElement("img")
+    imgUn.id = "heart_un_" + i
+    imgUn.src = "img/heart.png"
+    divheartUn.appendChild(imgUn)
+  }
+  divlifeUn.appendChild(divheartUn)
+
   var divitems = document.createElement('div')
   divitems.id = "items"
   divmenu.appendChild(divitems)
