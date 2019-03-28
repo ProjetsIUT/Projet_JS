@@ -95,6 +95,7 @@ function constructgamepage() {
   var divmenu = document.createElement('div')
   divmenu.id = "menu"
   document.body.appendChild(divmenu)
+  
   var divlife = document.createElement('div')
   divlife.id = "life"
   divmenu.appendChild(divlife)
