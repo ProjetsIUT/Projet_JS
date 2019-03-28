@@ -144,7 +144,7 @@ function constructgamepage() {
   acommencer.innerHTML = "Commencer la partie"
   acommencer.className = "beg"
   divnav.appendChild(acommencer)
-  document.getElementById("commencer").onclick = beginning()
+  document.getElementById("commencer").onclick = "beginning()"
 }
 
 function beginning() {
