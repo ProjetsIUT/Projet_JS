@@ -1,6 +1,5 @@
-
-var canvas = document.getElementById("carte")
-var C = new carte(canvas)
+var canvas
+var C
 var P
 var P2
 
@@ -59,7 +58,54 @@ function clavier(e){
 
 }
 
+function constructgamepage() {
+  var title = document.createElement('h1')
+  title.innerHTML = "Invasion au premier étage du batiment k !"
+  document.body.appendChild(title)
+  var carte = document.createElement('canvas')
+  carte.id = "carte"
+  carte.width = "700"
+  carte.height = "600"
+  document.body.appendChild(carte)
+  var divmenu = document.createElement('div')
+  divmenu.id = "menu"
+  document.body.appendChild(divmenu)
+  var divlife = document.createElement('div')
+  divlife.id = "life"
+  divmenu.appendChild(divlife)
+  var vierestantesJ1 = document.createElement("a")
+  vierestantesJ1.innerHTML = "Vies Restantes du Joueur 1"
+  divlife.appendChild(vierestantesJ1)
+  var divheart = document.createElement("div")
+  divheart.id = "heart"
+  for(let i = 0; i<3; i++) {
+    let img = document.createElement("img")
+    img.id = "heart" + i
+    img.src = "img/heart.png"
+    divheart.appendChild(img)
+  }
+  divlife.appendChild(divheart)
+  var divitems = document.createElement('div')
+  divitems.id = "items"
+  divmenu.appendChild(divitems)
+  var atime = document.createElement('a')
+  atime.id = "time"
+  atime.innerHTML = "Temps restant"
+  divitems.appendChild(atime)
+  var divnav = document.createElement('div')
+  divnav.id = "nav"
+  divmenu.appendChild(divnav)
+  var acommencer = document.createElement('a')
+  acommencer.id = "commencer"
+  acommencer.href = "#"
+  acommencer.innerHTML = "Commencer"
+  divnav.appendChild(acommencer)
+  document.getElementById("commencer").onclick = beginning
+}
+
 function beginning() {
+  canvas = document.getElementById("carte")
+  C = new carte(canvas)
   P = new player("Joueur", C,290,460)
   P2 = new player("Joueur", C, 290,490)
   tab_ennemis = [new ennemi("Ennemi1",C,20,20), new ennemi("Ennemi2",C,100,100), new ennemi("Ennemi3",C,200,200),new ennemi("Ennemi4",C,330,480),
@@ -101,6 +147,3 @@ function time(){
   a_temps.innerHTML="Temps restant: " + temps 
 
 }
-
-
-document.getElementById("commencer").onclick = beginning

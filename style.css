@@ -13,6 +13,16 @@
 
 }
 
+#life {
+	margin: auto;
+	display : flex;
+	flex-direction: column;
+}
+
+#heart {
+	padding-top : 10px;
+}
+
 html{
 	height: 100%;
 }
