@@ -1,14 +1,12 @@
 
 var canvas = document.getElementById("carte")
 var C = new carte(canvas)
-var P = new player("Joueur", C,290,460)
-var P2 = new player("Joueur", C, 290,490)
+var P
+var P2
 
-var tab_ennemis=[new ennemi("Ennemi1",C,20,20), new ennemi("Ennemi2",C,100,100), new ennemi("Ennemi3",C,200,200),new ennemi("Ennemi4",C,330,480),
-                 new ennemi("Ennemi5",C,330,480), new ennemi("Ennemi6",C,197,468), new ennemi("Ennemi7",C,547,239), new ennemi("Ennemi8",C,319,128),
-                 new ennemi("Ennemi9",C,456,466), new ennemi("Ennemi10",C,662,295)]
-var temps = 500
-var a_temps = document.getElementById("time")
+var tab_ennemis
+var temps
+var a_temps
 
 
 function clavier(e){
@@ -61,6 +59,17 @@ function clavier(e){
 
 }
 
+function beginning() {
+  P = new player("Joueur", C,290,460)
+  P2 = new player("Joueur", C, 290,490)
+  tab_ennemis = [new ennemi("Ennemi1",C,20,20), new ennemi("Ennemi2",C,100,100), new ennemi("Ennemi3",C,200,200),new ennemi("Ennemi4",C,330,480),
+  new ennemi("Ennemi5",C,330,480), new ennemi("Ennemi6",C,197,468), new ennemi("Ennemi7",C,547,239), new ennemi("Ennemi8",C,319,128),
+  new ennemi("Ennemi9",C,456,466), new ennemi("Ennemi10",C,662,295)]
+  temps = 500
+  a_temps = document.getElementById("time")
+  start()
+}
+
 function start(){
 
   console.log("start")
@@ -78,6 +87,7 @@ function start(){
 }
 
 
+
 function time(){
 
   if(temps==0){
@@ -92,5 +102,5 @@ function time(){
 
 }
 
-start()
 
+document.getElementById("commencer").onclick = beginning
