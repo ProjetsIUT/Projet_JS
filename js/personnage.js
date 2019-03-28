@@ -1,7 +1,7 @@
 class personnage{
 
 
-	constructor(name, icone, canvas, carte){
+	constructor(name, icone, canvas, carte, x,y){
 
 		this.name = name //nom du personnage
 
@@ -11,16 +11,17 @@ class personnage{
 		this.image.src = icone //attribuer la source de l'icone à notre image
 		this.image.crossOrigin = "Anonymous";
 
-		this.posX = 350 //position X de l'image au début 
-		this.posY = 50 //position Y de l'image au début 
+		this.posX = x //position X de l'image au début 
+		this.posY = y//position Y de l'image au début 
 
 		this.largeur = 20//Largeur de l'image en px
 		this.hauteur = 20//hauteur de l'image en px
 
-		this.life = 100 //niveau de vie par défaut
+		this.life = 3 //niveau de vie par défaut
 		this.vitesse =4//vitesse par défaut 
-		
+		this.invincible=false //pas invinsible par défaut 
 
+	
 	}
 
 
@@ -36,7 +37,7 @@ class personnage{
 		let x
 		let y
 
-		let tab_couleurs_interdites= ["#000000ff6600","#0000000","#000000969696"] //tableau contenant les couleurs des obstacles à ne pas franchir 
+		let tab_couleurs_interdites= ["#000000ff6600","#0000000","#000000f44029","#0000000f2f200","#000000aa00"] //tableau contenant les couleurs des obstacles à ne pas franchir 
 
 		switch(p){
 
@@ -57,7 +58,7 @@ class personnage{
 
 					    
 				    		this.changer_position(this.posX, j+1)
-				    		return true 
+				    		return hex 
 				 	    }
 
 					}
@@ -83,7 +84,7 @@ class personnage{
 
 					    	//alert("obstacle détecté!")
 				    		this.changer_position(i-20, this.posY)
-				    		return true 
+				    		return hex
 				 	    }
 
 					}
@@ -110,7 +111,7 @@ class personnage{
 
 					    
 				    		this.changer_position(this.posX, j-20)
-				    		return true 
+				    		return hex
 				 	    }
 
 					}
@@ -135,7 +136,7 @@ class personnage{
 
 					    	//alert("obstacle détecté!")
 				    		this.changer_position(i+1, this.posY)
-				    		return true 
+				    		return hex
 				 	    }
 
 					}
@@ -171,9 +172,8 @@ class personnage{
 
 		//creer une image à partir de this.icone et la placer sur le canvas
 
-		this.carte.set_background()
 		this.carte.context.drawImage(this.image,this.posX,this.posY)
-		
+
 	}
 
 
@@ -181,30 +181,32 @@ class personnage{
 
 		//modifier les attributs posX et posY et placer le personnage aux nouvelles coordonnées
 
-		let oldX = this.posX
-		let oldY = this.posY
-
 		this.posX = x
 		this.posY = y
 
-		this.carte.context.clearRect(oldX,oldY,this.largeur,this.hauteur)
 		this.carte.set_background()
+
 		this.carte.context.drawImage(this.image,this.posX,this.posY)
 
 
+		this.placer_autres()
+	}
+
+	placer_autres(){  	//replacer les autres personnages aux anciennes positions car ils ont été écrasés par le nouveau fond 
+
+		P.placer_personnage()
+
+		//vérifier si un obstacle se trouve sur la trajectoire 
+
+		for(let i=0; i<tab_ennemis.length; i++){
+
+			tab_ennemis[i].placer_personnage()
+		}
 	}
 
 	deplacer(x){
 
-		//déplacer le personnage selon l'évènement déclenché 
-
-		//vérifier si un obstacle se trouve sur la trajectoire 
-		if (this.detecter_obstacle(x)){
-
-			return 
-		}
-
-
+	
 		//sauvegarde des coordonnées actuelles pour supprimer
 		let oldX = this.posX
 		let oldY = this.posY
@@ -234,30 +236,22 @@ class personnage{
 
 		}
 
-		//supprimer l'ancienne position 
+		//supprimer effacer le canvas à l'ancienne position 
 		this.carte.context.clearRect(oldX,oldY,this.largeur,this.hauteur)
 
+		//redéfinir le fond du canvas
 		this.carte.set_background()
+
+
 		//placer le personnage à la nouvelle position sur le canvas
 		this.carte.context.drawImage(this.image,this.posX,this.posY)
 
 
+		this.placer_autres()
+
+
 	}
 
-
-	remove_life(x){
-
-		//soustraire x points de vie à this
-
-		this.life-=x;
-	}
-
-	add_life(x){
-
-		//ajouter x points de vie à this
-
-		this.life +=x;
-	}
 
 	changer_vitesse(x){
 
