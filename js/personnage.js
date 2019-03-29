@@ -195,6 +195,7 @@ class personnage{
 	placer_autres(){  	//replacer les autres personnages aux anciennes positions car ils ont été écrasés par le nouveau fond 
 
 		P.placer_personnage()
+		P2.placer_personnage()
 
 		for(let i=0; i<tab_ennemis.length; i++){
 
