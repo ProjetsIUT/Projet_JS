@@ -23,51 +23,6 @@ class item {
 	}
 
 
-	choixItemPosition(i){
-
-		if (this.itemtab[i]=='chest'){
-			var x=Mathrandom()*(20-1)+1
-				if(x==19 || x==20 || x==1 || x==3 ){
-					this.posY=534
-					if(x==19){
-						this.posX=90
-					} else{
-						if(x==20){
-							this.posX=222
-						} else {
-							if(x==1){
-								this.posX=330
-							} else {
-								if(x==2){
-									this.posX=442
-								} else{
-									if(x==3){
-										this.posX=542
-									}
-								}
-							}
-						}
-					}
-				}
-		}
-
-
-
-
-
-
-
-
-
-
-	}
-
-
-
-
-
-	
-
 
 	placer_item(){
 

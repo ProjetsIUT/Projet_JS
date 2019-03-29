@@ -75,7 +75,7 @@ class player extends personnage{
 			var bruit = new Audio();
     		bruit.src = "son/yea.wav"
    			bruit.play();
-			this.life++
+			this.add_life();
 
 		}
 		if(this.detecter_obstacle(x)=="#0000001e2247"){
@@ -139,7 +139,26 @@ class player extends personnage{
 
 		//ajouter 1 points de vie à this
 
-		this.life ++;
+		if (this.life+1 < 4){
+			this.life++
+
+			if(this.name=="Joueur1"){
+				let lifes = document.getElementById("heart")
+				let img = document.createElement("img")
+	    		img.id = "heart_ajout"
+	   			img.src = "img/heart.png"
+	    		lifes.appendChild(img)
+			}else{
+				let lifesUn = document.getElementById("heartUn")
+				let img = document.createElement("img")
+	    		img.id = "heart_ajout"
+	   			img.src = "img/heart.png"
+	    		lifesUn.appendChild(img)
+			}
+		}
+		
+
+		
 	}
 
 	mourrir(){
