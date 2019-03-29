@@ -2,7 +2,7 @@ class player extends personnage{
 
 
 	constructor(name, carte,x,y){
-		if(name == "Joueur1"){
+		if(name == "Joueur2"){
 		super(name, "img/player2.png", document.getElementById("carte"), carte,x,y)
 
 		}else{
@@ -111,9 +111,17 @@ class player extends personnage{
 
 		//soustraire 1 points de vie à this
 
-		let lifes = document.getElementById("life")
-		let children = lifes.children
-		life.removeChild(children[children.length-1])
+		if(this.name=="Joueur1"){
+			let lifes = document.getElementById("heart")
+			let children = lifes.children
+			lifes.removeChild(children[children.length-1])
+		}else{
+
+			let lifesUn = document.getElementById("heartUn")
+			let childrenUn = lifesUn.childrenUn
+			lifesUn.removeChild(childrenUn[childrenUn.length-1])
+
+		}
 
 		if(this.life-1==0){
 
