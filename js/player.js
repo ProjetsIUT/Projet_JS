@@ -9,6 +9,7 @@ class player extends personnage{
 			super(name, "img/player.png", document.getElementById("carte"), carte,x,y)
 
 		}
+		this.dead = 0
 		
 	}
 
@@ -71,10 +72,11 @@ class player extends personnage{
 	detecter_item(x){
 
 		if(this.detecter_obstacle(x)=="#00000031f745"){
-			if(this.vitesse < 25)
+			
 			var bruit = new Audio();
     		bruit.src = "son/yea.wav"
    			bruit.play();
+
 			this.add_life();
 
 		}
@@ -163,21 +165,26 @@ class player extends personnage{
 			var bruit = new Audio();
     		bruit.src = "son/blbl.wav"
    			bruit.play();
+   			this.dead = 1
 		//fin de la partie, perdue
-		let lck = Math.floor(Math.random() * 3)//random entre 0 et 9
-		if(lck = 0){
-			alert("C'était pourtant facile")
+		if(P.dead == 1 && P2.dead == 1){
+
+			let lck = Math.floor(Math.random() * 3)//random entre 0 et 9
+			if(lck == 0){
+				alert("C'était pourtant facile")
+			}
+			else if(lck == 1){
+				alert("Il faut connecter ses neurones")
+			}
+			else if(lck == 2){
+				alert("Essaie encore")
+			}
+			else if(lck == 3){
+				alert("On enfonce des portes ouvertes")
+			}
+			document.location.reload()
 		}
-		if(lck = 1){
-			alert("Il faut connecter ses neurones")
-		}
-		if(lck = 2){
-			alert("Essaie encore")
-		}
-		if(lck = 3){
-			alert("On enfonce des portes ouvertes")
-		}
-		document.location.reload()
+		
 	}
 
 	gagner(){

@@ -8,7 +8,8 @@ var tab_items
 var temps
 var a_temps
 var timer = null
-var difficult = 1 //1 = facile 2 = moyen 3= dur
+
+var difficult 
 
 function clavier(e){
 
@@ -93,8 +94,10 @@ function constructsecondmenu() {
   instruction.innerHTML = "Instructions pour jouer : Voici les touches que vous allez utiliser pour vous déplacer. Le but de ce jeu est d'arriver le plus vite possible a l'escalier qui est a la sortie du labyrinthe. Pour cela, vous allez devoir eviter les mechantes de Tech de Co qui vous bloqueront le passage. Une fois le niveau de difficulte choisi, cliquez sur 'Commencer la partie' pour lancer une game.\n Vous pourrez trouver des objets sur votre route, mais attention certains sont des malus !"
   document.body.appendChild(instruction)
   let imgj1 = document.createElement('img')
+
   imgj1.src = "img/Touche_Joueur_1.png"
   let imgj2 = document.createElement('img')
+
   imgj2.src = "img/Touche_Joueur_2.png"
   let pjoueur1 = document.createElement('p')
   pjoueur1.innerHTML = "Touches de deplacement pour le joueur 1"
@@ -256,10 +259,22 @@ function beginning() {
     let j = 0
     let k = 0
     let m = 0
+    let lck
     for(let i = 0; i<20; i++){
-      let lck = Math.floor(Math.random() * 10)//random entre 0 et 9
+
+      if(difficult == '1'){
+        lck = Math.floor(Math.random() * 10)//random entre 0 et 9
+        temps = 500
+      }else if(difficult == '2'){
+        lck = Math.floor(Math.random() * 15)//random entre 0 et 9
+        temps = 400
+      }else{
+        lck = Math.floor(Math.random() * 20)//random entre 0 et 9
+        temps = 300
+      }
+      
       console.log(lck)
-      if(lck > 4  ){
+      if(lck > 4  || difficult == 3){
         tab_ennemis[j] = new ennemi("Ennemi",C,tabposX[i],tabposY[i])
         console.log('ennemi')
         j++
@@ -281,7 +296,7 @@ function beginning() {
 
 
   if(difficult = 1){
-      temps = 500
+      
     }else{
       temps = 300
     }

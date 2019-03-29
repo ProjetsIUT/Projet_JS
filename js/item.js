@@ -24,6 +24,21 @@ class item {
 
 
 
+
+
+
+
+
+
+
+	}
+
+
+
+
+
+	
+
 	placer_item(){
 
 		this.carte.context.drawImage(this.image,this.posX,this.posY, this.largeur, this.hauteur)
