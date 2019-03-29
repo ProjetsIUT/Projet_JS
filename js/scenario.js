@@ -7,6 +7,7 @@ var tab_ennemis
 var tab_items
 var temps
 var a_temps
+var timer = null
 var difficult = 1 //1 = facile 2 = moyen 3= dur
 
 function clavier(e){
@@ -71,6 +72,7 @@ function constructmainmenu() {
   tit.innerHTML = "Invasion au premier etage du batiment k !"
   tit.style.textAlign = "center"
   tit.style.fontSize = "4em"
+  tit.style.paddingTop = "10%"
   document.body.appendChild(tit)
   let beg = document.createElement('button')
   beg.innerHTML = "Commencer le jeu"
@@ -149,7 +151,7 @@ function constructgamepage() {
 }
 
 function beginning() {
-
+  
   canvas = document.getElementById("carte")
   C = new carte(canvas)
   P = new player("Joueur1", C,290,460)
@@ -231,8 +233,8 @@ function start(){
   P.placer_autres()
   P2.placer_autres()
 
-
-  setInterval(time,1000)
+  clearInterval(timer)
+  timer = setInterval(time,1000)
 
 
 }
