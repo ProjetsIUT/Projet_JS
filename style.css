@@ -24,6 +24,12 @@
 	flex-direction: column;
 }
 
+#lifeUn {
+	margin: auto;
+	display : flex;
+	flex-direction: column;
+}
+
 #heart {
 	padding-top : 10px;
 }
