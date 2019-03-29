@@ -76,8 +76,7 @@ class player extends personnage{
 			var bruit = new Audio();
     		bruit.src = "son/yea.wav"
    			bruit.play();
-
-			this.add_life();
+			this.add_life()
 
 		}
 		if(this.detecter_obstacle(x)=="#0000001e2247"){
