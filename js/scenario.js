@@ -221,6 +221,7 @@ function start(){
 
   C.set_background()
   P.placer_autres()
+  P2.placer_autres()
 
 
   setInterval(time,1000)
