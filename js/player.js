@@ -2,7 +2,7 @@ class player extends personnage{
 
 
 	constructor(name, carte,x,y){
-		if(name == "Joueur1"){
+		if(name == "Joueur2"){
 		super(name, "img/player2.png", document.getElementById("carte"), carte,x,y)
 
 		}else{
