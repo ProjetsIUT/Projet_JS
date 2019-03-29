@@ -164,7 +164,7 @@ class ennemi extends personnage{
 					
 					    if(tab_couleurs_interdites.includes(hex)){
 
-					
+						
 				    		return hex
 				 	    }
 
