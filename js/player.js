@@ -118,7 +118,7 @@ class player extends personnage{
 		}else{
 
 			let lifesUn = document.getElementById("heartUn")
-			let childrenUn = lifesUn.childrenUn
+			let childrenUn = lifesUn.children
 			lifesUn.removeChild(childrenUn[childrenUn.length-1])
 
 		}
