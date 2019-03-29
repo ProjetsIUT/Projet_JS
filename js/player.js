@@ -112,12 +112,12 @@ class player extends personnage{
 		//soustraire 1 points de vie à this
 
 		if(this.name=="Joueur1"){
-			let lifes = document.getElementById("life")
+			let lifes = document.getElementById("heart")
 			let children = lifes.children
 			lifes.removeChild(children[children.length-1])
 		}else{
 
-			let lifesUn = document.getElementById("lifeUn")
+			let lifesUn = document.getElementById("heartUn")
 			let childrenUn = lifesUn.childrenUn
 			lifesUn.removeChild(childrenUn[childrenUn.length-1])
 
