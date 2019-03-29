@@ -54,7 +54,7 @@ body{
 	padding: 10px;
 }
 
-#imgj1, #imgj2 {
+#joueurs > img {
 	width: 150px;
 	height: 100px;
 }
