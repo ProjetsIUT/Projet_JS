@@ -131,17 +131,25 @@ function constructgamepage() {
 }
 
 function beginning() {
+
   canvas = document.getElementById("carte")
   C = new carte(canvas)
   P = new player("Joueur1", C,290,460)
   P2 = new player("Joueur2", C, 290,490)
+  document.getElementById('nav').removeChild(document.getElementById('commencer'))
+  var recommencer = document.createElement('a')
+  recommencer.id = "recommencer"
+  recommencer.href = "#"
+  recommencer.innerHTML = "Recommencer la partie"
+  recommencer.className = "beg"
+  document.getElementById("nav").appendChild(recommencer)
+  document.getElementById("recommencer").onclick = constructgamepage
 
   resetmobs()
-placermobs()
-
-
+  placermobs()
     
-  }
+}
+
   function resetmobs(){
     tab_items = []
     tab_ennemis = []
