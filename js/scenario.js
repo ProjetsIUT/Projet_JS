@@ -122,7 +122,7 @@ function constructgamepage() {
   var divheartUn = document.createElement("div")
   divheartUn.id = "heartUn"
   for(let i = 0; i<3; i++) {
-    let imgUn = document.createElement("imgUn")
+    let imgUn = document.createElement("img")
     imgUn.id = "heart_un_" + i
     imgUn.src = "img/heart.png"
     divheartUn.appendChild(imgUn)
