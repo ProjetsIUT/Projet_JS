@@ -37,7 +37,10 @@ class personnage{
 		let x
 		let y
 
-		let tab_couleurs_interdites= ["#000000ff6600","#0000000","#000000f44029","#0000000f2f200","#000000aa00"] //tableau contenant les couleurs des obstacles à ne pas franchir 
+		let tab_couleurs_interdites= ["#000000ff6600","#0000000",
+		"#000000f44029","#0000000f2f200","#000000aa00", "#0000001e2247", 
+		"#0000007FFF00", "#000000000080"
+		,"#00000031f745", "#00000016125e"] //tableau contenant les couleurs des obstacles à ne pas franchir 
 
 		switch(p){
 
@@ -172,7 +175,7 @@ class personnage{
 
 		//creer une image à partir de this.icone et la placer sur le canvas
 
-		this.carte.context.drawImage(this.image,this.posX,this.posY)
+		this.carte.context.drawImage(this.image,this.posX,this.posY, this.largeur, this.hauteur)
 
 	}
 
@@ -186,7 +189,7 @@ class personnage{
 
 		this.carte.set_background()
 
-		this.carte.context.drawImage(this.image,this.posX,this.posY)
+		this.carte.context.drawImage(this.image,this.posX,this.posY, 20, 20)
 
 
 		this.placer_autres()
@@ -197,12 +200,18 @@ class personnage{
 		P.placer_personnage()
 		P2.placer_personnage()
 
+
 		//vérifier si un obstacle se trouve sur la trajectoire 
 
 		for(let i=0; i<tab_ennemis.length; i++){
 
 			tab_ennemis[i].placer_personnage()
 		}
+		for(let i=0; i<tab_items.length; i++){
+
+			tab_items[i].placer_item()
+		}
+		
 	}
 
 	deplacer(x){
@@ -245,7 +254,7 @@ class personnage{
 
 
 		//placer le personnage à la nouvelle position sur le canvas
-		this.carte.context.drawImage(this.image,this.posX,this.posY)
+		this.carte.context.drawImage(this.image,this.posX,this.posY, 20, 20)
 
 
 		this.placer_autres()

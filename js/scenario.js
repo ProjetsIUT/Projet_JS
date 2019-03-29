@@ -4,9 +4,10 @@ var P
 var P2
 
 var tab_ennemis
+var tab_items
 var temps
 var a_temps
-
+var difficult = 1 //1 = facile 2 = moyen 3= dur
 
 function clavier(e){
 
@@ -150,12 +151,63 @@ function constructgamepage() {
 function beginning() {
   canvas = document.getElementById("carte")
   C = new carte(canvas)
-  P = new player("Joueur", C,290,460)
-  P2 = new player("Joueur", C, 290,490)
-  tab_ennemis = [new ennemi("Ennemi1",C,20,20), new ennemi("Ennemi2",C,100,100), new ennemi("Ennemi3",C,200,200),new ennemi("Ennemi4",C,330,480),
-  new ennemi("Ennemi5",C,330,480), new ennemi("Ennemi6",C,197,468), new ennemi("Ennemi7",C,547,239), new ennemi("Ennemi8",C,319,128),
-  new ennemi("Ennemi9",C,456,466), new ennemi("Ennemi10",C,662,295)]
-  temps = 500
+  P = new player("Joueur1", C,290,460)
+  P2 = new player("Joueur2", C, 290,490)
+
+  resetmobs()
+placermobs()
+
+
+    
+  }
+  function resetmobs(){
+    tab_items = []
+    tab_ennemis = []
+
+  }
+
+  function placermobs(){
+    var tabposX = [100, 200, 330, 330, 197, 547, 319, 456, 662, 
+                  50, 20, 10, 230, 110, 547, 220, 17, 650]
+
+    var tabposY = [100, 200, 480, 520, 468, 238, 128, 466, 295, 
+                  100, 200, 480, 300, 468, 450, 500, 210, 114]
+
+    tab_items = new Array()
+    tab_ennemis = new Array()
+    let j = 0
+    let k = 0
+    let m = 0
+    for(let i = 0; i<20; i++){
+      let lck = Math.floor(Math.random() * 10)//random entre 0 et 9
+      console.log(lck)
+      if(lck > 4  ){
+        tab_ennemis[j] = new ennemi("Ennemi",C,tabposX[i],tabposY[i])
+        console.log('ennemi')
+        j++
+      }else if (lck > 2){
+        tab_items[k] = new item("pomme", "img/pomme2.png", document.getElementById("carte"), C, tabposX[i], tabposY[i] )
+        k++
+         console.log('pomme')
+      }else if(lck > 1){
+        tab_items[k] = new item("bonbon", "img/bonbon.png", document.getElementById("carte"), C, tabposX[i], tabposY[i] )
+        k++
+         console.log('bonbon')
+      }else{
+                tab_items[k] = new item("bonbon", "img/poisson.png", document.getElementById("carte"), C, tabposX[i], tabposY[i] )
+        k++
+      }
+  }
+  
+
+
+
+  if(difficult = 1){
+      temps = 500
+    }else{
+      temps = 300
+    }
+
   a_temps = document.getElementById("time")
   start()
 }
@@ -169,9 +221,9 @@ function start(){
 
   C.set_background()
   P.placer_autres()
-  P2.placer_autres()
 
-  	setInterval(time,2000)
+
+  setInterval(time,1000)
 
 
 }

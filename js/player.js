@@ -2,9 +2,14 @@ class player extends personnage{
 
 
 	constructor(name, carte,x,y){
+		if(name == "Joueur1"){
+		super(name, "img/player2.png", document.getElementById("carte"), carte,x,y)
 
-		super(name, "img/player.png", document.getElementById("carte"), carte,x,y)
+		}else{
+			super(name, "img/player.png", document.getElementById("carte"), carte,x,y)
 
+		}
+		
 	}
 
 	deplacer(x){
@@ -18,12 +23,15 @@ class player extends personnage{
 		}
 
 		this.detecter_escalier(x) //détecter si le player a atteint l'escalier et gagné
-
+		this.detecter_item(x)
 		//vérifier si un obstacle se trouve sur la trajectoire 
 		if (this.detecter_obstacle(x)){
 
 			return 
 		}
+
+
+		
 
  	
 
@@ -39,7 +47,9 @@ class player extends personnage{
 		for(let i=0; i<tab_couleurs_interdites.length; i++){
 
 			if(this.detecter_obstacle(x)==tab_couleurs_interdites[i]){
-
+			var bruit = new Audio();
+    		bruit.src = "son/gr.wav"
+   			bruit.play();
 				this.remove_life();
 				return true;
 			}
@@ -53,6 +63,34 @@ class player extends personnage{
 		if(this.detecter_obstacle(x)=="#000000aa00"){
 
 			this.gagner()
+		}
+
+		
+	}
+
+	detecter_item(x){
+
+		if(this.detecter_obstacle(x)=="#00000031f745"){
+			if(this.vitesse < 25)
+			var bruit = new Audio();
+    		bruit.src = "son/yea.wav"
+   			bruit.play();
+			this.vitesse = this.vitesse + 5
+
+		}
+		if(this.detecter_obstacle(x)=="#0000001e2247"){
+			this.vitesse = 13
+			var bruit = new Audio();
+    		bruit.src = "son/yea.wav"
+   			bruit.play();
+			
+		}
+		if(this.detecter_obstacle(x)=="#00000016125e"){
+			var bruit = new Audio();
+    		bruit.src = "son/blbl.wav"
+   			bruit.play();
+			this.vitesse = 3
+	
 		}
 
 		
@@ -97,9 +135,23 @@ class player extends personnage{
 	}
 
 	mourrir(){
-
+			var bruit = new Audio();
+    		bruit.src = "son/blbl.wav"
+   			bruit.play();
 		//fin de la partie, perdue
-		alert("C'était pourtant facile")
+		let lck = Math.floor(Math.random() * 3)//random entre 0 et 9
+		if(lck = 0){
+			alert("C'était pourtant facile")
+		}
+		if(lck = 1){
+			alert("Il faut connecter ses neurones")
+		}
+		if(lck = 2){
+			alert("Essaie encore")
+		}
+		if(lck = 3){
+			alert("On enfonce des portes ouvertes")
+		}
 		document.location.reload()
 	}
 
