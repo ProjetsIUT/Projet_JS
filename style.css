@@ -24,6 +24,12 @@
 	flex-direction: column;
 }
 
+#lifeUn {
+	margin: auto;
+	display : flex;
+	flex-direction: column;
+}
+
 #heart {
 	padding-top : 10px;
 }
@@ -37,8 +43,39 @@ body{
 	display : flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 	height: 100%;
+}
+
+#difficult {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px;
+}
+
+#imgj1, #imgj2 {
+	width: 150px;
+	height: 100px;
+}
+
+#difficult > button {
+	font-size: 1.5em;
+	padding: 15px;
+	margin : 5px;
+}
+
+#joueur1, #joueur2 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+}
+
+#joueurs {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .beg {
@@ -61,7 +98,9 @@ canvas {
 	margin : auto;
 }
 
-h1 {
+
+
+h1, h2 {
 	text-align: center;
 	padding-top : 5px;
 	padding-bottom : 10px;

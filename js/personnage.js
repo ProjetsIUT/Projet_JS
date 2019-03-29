@@ -199,6 +199,10 @@ class personnage{
 
 		P.placer_personnage()
 		P2.placer_personnage()
+
+
+		//vérifier si un obstacle se trouve sur la trajectoire 
+
 		for(let i=0; i<tab_ennemis.length; i++){
 
 			tab_ennemis[i].placer_personnage()
@@ -266,6 +270,8 @@ class personnage{
 		this.vitesse = x
 
 	}
+
+
 
 
 
