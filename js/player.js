@@ -114,7 +114,7 @@ class player extends personnage{
 		if(this.name=="Joueur"){
 			let lifes = document.getElementById("life")
 			let children = lifes.children
-			life.removeChild(children[children.length-1])
+			lifes.removeChild(children[children.length-1])
 		}else{
 
 			let lifes = document.getElementById("lifeUn")
