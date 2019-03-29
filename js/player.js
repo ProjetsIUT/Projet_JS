@@ -116,11 +116,9 @@ class player extends personnage{
 			let children = lifes.children
 			lifes.removeChild(children[children.length-1])
 		}else{
-
 			let lifesUn = document.getElementById("heartUn")
 			let childrenUn = lifesUn.children
 			lifesUn.removeChild(childrenUn[childrenUn.length-1])
-
 		}
 
 		if(this.life-1==0){
