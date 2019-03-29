@@ -80,7 +80,75 @@ function constructmainmenu() {
   beg.href = "#"
   beg.style.fontSize = "2em"
   document.body.appendChild(beg)
-  beg.onclick = constructgamepage
+  beg.onclick = constructsecondmenu
+}
+
+
+function constructsecondmenu() {
+  viderbody()
+  let tit = document.createElement('h1')
+  tit.innerHTML = "Invasion au premier etage du batiment k !"
+  document.body.appendChild(tit)
+  let instruction = document.createElement('h2')
+  instruction.innerHTML = "Instructions pour jouer : Voici les touches que vous allez utiliser pour vous déplacer. Le but de ce jeu est d'arriver le plus vite possible a l'escalier qui est a la sortie du labyrinthe. Pour cela, vous allez devoir eviter les mechantes de Tech de Co qui vous bloqueront le passage. Une fois le niveau de difficulte choisi, cliquez sur 'Commencer la partie' pour lancer une game.\n Vous pourrez trouver des objets sur votre route, mais attention certains sont des malus !"
+  document.body.appendChild(instruction)
+  let imgj1 = document.createElement('img')
+  imgj1.src = "img/Touche_Joueur_1.png"
+  let imgj2 = document.createElement('img')
+  imgj2.src = "img/Touche_Joueur_2.png"
+  let pjoueur1 = document.createElement('p')
+  pjoueur1.innerHTML = "Touches de deplacement pour le joueur 1"
+  let pjoueur2 = document.createElement('p')
+  pjoueur2.innerHTML = "Touches de deplacement pour le joueur 2"
+  let divjoueur = document.createElement('div')
+  divjoueur.id = "joueurs"
+  let divjoueur1 = document.createElement('div')
+  divjoueur1.id = "joueur1"
+  divjoueur1.appendChild(imgj1)
+  divjoueur1.appendChild(pjoueur1)
+  let divjoueur2 = document.createElement('div')
+  divjoueur2.id = "joueur2"
+  divjoueur2.appendChild(imgj2)
+  divjoueur2.appendChild(pjoueur2)
+  divjoueur.appendChild(divjoueur1)
+  divjoueur.appendChild(divjoueur2)
+  document.body.appendChild(divjoueur)
+  let divdifficult = document.createElement('div')
+  divdifficult.id = "difficult"
+  let buttonfacile = document.createElement('button')
+  buttonfacile.id = "bfacile"
+  buttonfacile.href = "#"
+  buttonfacile.innerHTML = "Difficulte : Facile"
+  buttonfacile.className = "beg"
+  let buttonmoyen = document.createElement('button')
+  buttonmoyen.id = "bmoyen"
+  buttonmoyen.href = "#"
+  buttonmoyen.innerHTML = "Difficulte : Moyen"
+  buttonmoyen.className = "beg"
+  let buttondifficile = document.createElement('button')
+  buttondifficile.id = "bdifficile"
+  buttondifficile.href = "#"
+  buttondifficile.innerHTML = "Difficulte : Difficile"
+  buttondifficile.className = "beg"
+  divdifficult.appendChild(buttonfacile)
+  divdifficult.appendChild(buttonmoyen)
+  divdifficult.appendChild(buttondifficile)
+  document.body.appendChild(divdifficult)
+
+  buttonfacile.addEventListener("click", function() {
+    difficult = 1
+    constructgamepage()
+  })
+  
+  buttonmoyen.addEventListener("click", function() {
+    difficult = 2
+    constructgamepage()
+  })
+
+  buttondifficile.addEventListener("click", function() {
+    difficult = 3
+    constructgamepage()
+  })
 }
 
 window.onload = constructmainmenu
